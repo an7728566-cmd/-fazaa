@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>فزعة | الفني اللي تحتاجه</title>
+<style>
+:root{--navy:#0B3D5B;--orange:#FF7A00;--mint:#00B894;--bg:#F5F7FA;--text:#102A43;--muted:#6B7C93;--card:#fff;--line:#E5EAF0}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Tahoma,sans-serif;background:var(--bg);color:var(--text)}
+button,input,select,textarea{font:inherit} button{cursor:pointer;border:0}
+.app{max-width:480px;margin:auto;min-height:100vh;background:var(--bg);box-shadow:0 0 30px #00000012}
+header{background:var(--navy);color:white;padding:22px 18px 18px;border-radius:0 0 24px 24px}
+.brand{display:flex;align-items:center;gap:10px}.logo{width:48px;height:48px;border-radius:14px;background:var(--orange);display:grid;place-items:center;font-size:26px}
+.brand b{font-size:25px}.brand small{display:block;color:#dbe8ef;margin-top:3px}
+main{padding:18px}.screen{display:none}.screen.active{display:block}
+h2{margin:8px 0 16px;font-size:21px}.muted{color:var(--muted);font-size:13px}
+.search{background:white;border:1px solid var(--line);border-radius:14px;padding:13px;width:100%;outline:none;margin:10px 0 18px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cat{min-height:92px;display:flex;flex-direction:column;justify-content:center;align-items:center}.cat{background:white;border:1px solid var(--line);border-radius:16px;padding:14px 6px;text-align:center}.cat span{font-size:24px;display:block;margin-bottom:6px}.cat b{font-size:12px}
+.section{margin-top:24px}.row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px;margin:10px 0}.tech{display:flex;gap:12px;align-items:flex-start}.avatar{width:52px;height:52px;border-radius:15px;background:#eaf1f6;display:grid;place-items:center;font-size:25px;flex:none}.tech h3{margin:0 0 5px;font-size:16px}.rating{color:#f39c12;font-weight:bold}.tag{display:inline-block;background:#e8faf5;color:#087a63;border-radius:20px;padding:5px 8px;font-size:11px;margin-top:7px}
+.actions{display:flex;gap:8px;margin-top:12px}.btn{padding:11px 13px;border-radius:12px;font-weight:bold;flex:1}.primary{background:var(--orange);color:white}.secondary{background:#edf3f7;color:var(--navy)}.success{background:var(--mint);color:white}.danger{background:#feeceb;color:#b42318}
+nav{position:sticky;bottom:0;background:white;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:8px 4px;z-index:5}nav button{background:none;color:var(--muted);padding:7px 2px;font-size:11px}nav button.active{color:var(--navy);font-weight:bold}
+.field{margin:10px 0}.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:white;outline:none}.field textarea{min-height:90px;resize:vertical}
+.back{background:none;color:var(--navy);font-weight:bold;padding:0;margin-bottom:12px}.pill{padding:6px 9px;border-radius:20px;background:#fff3e8;color:#b85b00;font-size:11px}.adminStat{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:white;border:1px solid var(--line);border-radius:16px;padding:15px}.stat b{font-size:24px;display:block;margin-top:5px}
+.notice{background:#fff7ed;border:1px solid #ffd9b3;padding:12px;border-radius:14px;font-size:13px;margin:12px 0}
+.modal{position:fixed;inset:0;background:#0007;display:none;align-items:flex-end;z-index:20}.modal.show{display:flex}.sheet{background:white;width:100%;max-width:480px;margin:auto;border-radius:22px 22px 0 0;padding:20px;max-height:90vh;overflow:auto}
+.stars button{background:none;font-size:30px;padding:3px;color:#ddd}.stars button.on{color:#f39c12}
+.empty{text-align:center;padding:30px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="brand"><div class="logo">🔧</div><div><b>فزعة</b><small>الفني اللي تحتاجه .. بوقت تحتاجه</small></div></div>
+</header>
+
+<main>
+<section id="home" class="screen active">
+  <h2>شنو تحتاج اليوم؟</h2>
+  <input class="search" id="homeSearch" placeholder="ابحث عن كهربائي، سباك، تبريد..." oninput="searchTechs(this.value)">
+  <div class="grid" id="cats"></div>
+  <div class="section">
+    <div class="row"><h2 style="margin:0">📍 خدمات قريبة منك</h2><span class="pill">البصرة</span></div>
+    <div class="card" style="background:linear-gradient(135deg,#0B3D5B,#145777);color:white;border:0">
+      <b style="font-size:17px">تحتاج فني اليوم؟</b>
+      <p style="opacity:.85;margin:7px 0 12px">اختار الخدمة وشوف الفنيين المتوفرين بمنطقتك.</p>
+      <button class="btn primary" onclick="show('search')">ابحث عن فني الآن</button>
+    </div>
+  </div>
+  <div class="section"><div class="row"><h2 style="margin:0">⭐ فنيون مميزون</h2><button class="muted" onclick="show('search')">عرض الكل</button></div><div id="featured"></div></div>
+</section>
+
+<section id="search" class="screen">
+  <button class="back" onclick="show('home')">← الرئيسية</button>
+  <h2>البحث عن فني</h2>
+  <input class="search" id="searchInput" placeholder="مثلاً: كهربائي" oninput="searchTechs(this.value)">
+  <div class="field"><select id="areaFilter" onchange="searchTechs(document.getElementById('searchInput').value)"><option value="">كل المناطق</option><option>العشار</option><option>الجزائر</option><option>المعقل</option><option>أبو الخصيب</option></select></div>
+  <div id="results"></div>
+</section>
+
+<section id="register" class="screen">
+  <h2>سجّل كفني مجاناً 🔧</h2>
+  <div class="notice">أول 100 فني يحصلون على إدراج مجاني في فزعة.</div>
+  <form onsubmit="registerTech(event)">
+    <div class="field"><label>الاسم / اسم المحل</label><input id="rName" required></div>
+    <div class="field"><label>رقم الهاتف</label><input id="rPhone" type="tel" required></div>
+    <div class="field"><label>المهنة</label><select id="rCat" required></select></div>
+    <div class="field"><label>المنطقة</label><select id="rArea" required><option value="">اختر المنطقة</option><option>العشار</option><option>الجزائر</option><option>المعقل</option><option>أبو الخصيب</option></select></div>
+    <div class="field"><label>سنوات الخبرة</label><input id="rExp" type="number" min="0" max="60"></div>
+    <div class="field"><label>الخدمات</label><input id="rServices" placeholder="مثلاً: تصليح سبلت، تنظيف، نصب"></div>
+    <div class="field"><label>نبذة قصيرة</label><textarea id="rBio" placeholder="اكتب عن خبرتك وخدماتك"></textarea></div>
+    <button class="btn primary" style="width:100%">إرسال للتدقيق</button>
+  </form>
+</section>
+
+<section id="account" class="screen"><h2>حسابي</h2><div id="accountBox"></div></section>
+<section id="admin" class="screen">
+  <button class="back" onclick="show('account')">← رجوع</button>
+  <h2>لوحة تحكم فزعة</h2>
+  <div class="adminStat">
+    <div class="stat"><span class="muted">الفنيون</span><b id="statTech">0</b></div>
+    <div class="stat"><span class="muted">المميزون</span><b id="statFeatured">0</b></div>
+    <div class="stat"><span class="muted">الطلبات</span><b>0</b></div>
+    <div class="stat"><span class="muted">التقييمات</span><b id="statReviews">0</b></div>
+  </div>
+  <div class="section"><div class="row"><h2 style="margin:0">الفنيون</h2></div><div id="adminTechs"></div></div>
+</section>
+</main>
+<div style="padding:0 18px 18px;text-align:center;color:#8a99a8;font-size:11px">فزعة — منصة عراقية تجمعك بالفني المناسب بسرعة وسهولة</div>
+<nav>
+<button class="active" onclick="nav(this,'home')">🏠<br>الرئيسية</button>
+<button onclick="nav(this,'search')">🔎<br>البحث</button>
+<button onclick="nav(this,'register')">🔧<br>سجّل كفني</button>
+<button onclick="openAccount(this)">👤<br>حسابي</button>
+</nav>
+
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+
+<script>
+const cats=[
+['كهرباء','⚡'],['تبريد وتكييف','❄️'],['سباكة','🚰'],['موبايلات','📱'],['نجارة','🪚'],['صباغة','🎨'],
+['حدادة','🔨'],['تنظيف','🧹'],['نقل أثاث','🚚']
+];
+let techs=[
+{id:1,name:'أحمد للتبريد',phone:'07700000001',cat:'تبريد وتكييف',area:'الجزائر',exp:8,services:'تصليح سبلت، تنظيف، نصب، تعبئة غاز',bio:'متخصص بالتبريد والسبلت وخدمة المنازل.',rating:4.8,reviews:36,featured:true,available:true,verified:true},
+{id:2,name:'علي للكهرباء',phone:'07700000002',cat:'كهرباء',area:'العشار',exp:6,services:'تمديدات، أعطال، إنارة',bio:'خدمات كهربائية للمنازل والمحلات.',rating:4.7,reviews:24,featured:true,available:true,verified:true},
+{id:3,name:'محمد للسباكة',phone:'07700000003',cat:'سباكة',area:'المعقل',exp:5,services:'تسليك، تبديل حنفيات، تسريبات',bio:'سباك منزلي متاح يومياً.',rating:4.9,reviews:18,featured:false,available:false,verified:true},
+{id:4,name:'حسن موبايل',phone:'07700000004',cat:'موبايلات',area:'أبو الخصيب',exp:7,services:'شاشات، بطاريات، سوفتوير',bio:'صيانة أجهزة الموبايل.',rating:4.6,reviews:41,featured:true,available:true,verified:true}
+];
+let stored=localStorage.getItem('fazaa_techs'); if(stored){try{techs=JSON.parse(stored)}catch(e){}}
+function save(){localStorage.setItem('fazaa_techs',JSON.stringify(techs))}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='search')searchTechs('');if(id==='admin')renderAdmin();window.scrollTo(0,0)}
+function nav(btn,id){document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');show(id)}
+function renderCats(){
+ document.getElementById('cats').innerHTML=cats.map(c=>`<button class="cat" onclick="filterCat('${c[0]}')"><span>${c[1]}</span><b>${c[0]}</b></button>`).join('');
+ document.getElementById('rCat').innerHTML='<option value="">اختر المهنة</option>'+cats.map(c=>`<option>${c[0]}</option>`).join('');
+}
+function card(t){
+ return `<div class="card"><div class="tech"><div class="avatar">${cats.find(c=>c[0]===t.cat)?.[1]||'🔧'}</div><div style="flex:1"><h3>${t.name} ${t.verified?'✓':''}</h3><div><span class="rating">⭐ ${t.rating.toFixed(1)}</span> <span class="muted">(${t.reviews} تقييم)</span></div><div class="muted">${t.cat} · 📍 ${t.area}</div><span class="tag">${t.available?'🟢 متاح الآن':'⚪ غير متاح'} ${t.featured?' · ⭐ مميز':''}</span></div></div><div class="actions"><button class="btn secondary" onclick="openTech(${t.id})">الملف</button><button class="btn success" onclick="callTech('${t.phone}')">📞 اتصال</button><button class="btn primary" onclick="requestService(${t.id})">طلب خدمة</button></div></div>`
+}
+function renderFeatured(){document.getElementById('featured').innerHTML=techs.filter(t=>t.featured).slice(0,3).map(card).join('')||'<div class="empty">لا يوجد فنيون بعد</div>'}
+function searchTechs(q=''){let area=document.getElementById('areaFilter')?.value||'';q=q.trim().toLowerCase();let out=techs.filter(t=>(!q||[t.name,t.cat,t.area,t.services].join(' ').toLowerCase().includes(q))&&(!area||t.area===area)).sort((a,b)=>(b.featured-a.featured)||(b.rating-a.rating));document.getElementById('results').innerHTML=out.length?out.map(card).join(''):'<div class="empty">ما لقينا فني مطابق. جرّب خدمة أو منطقة ثانية.</div>'}
+function filterCat(cat){show('search');document.getElementById('searchInput').value=cat;searchTechs(cat)}
+function openTech(id){let t=techs.find(x=>x.id===id);if(!t)return;document.getElementById('sheet').innerHTML=`<button class="back" onclick="closeModal()">← رجوع</button><div class="tech"><div class="avatar" style="width:64px;height:64px;font-size:30px">${cats.find(c=>c[0]===t.cat)?.[1]||'🔧'}</div><div><h2 style="margin:0">${t.name}</h2><div class="rating">⭐ ${t.rating.toFixed(1)} <span class="muted">(${t.reviews} تقييم)</span></div><div class="muted">${t.cat} · ${t.area}</div></div></div><div class="card"><b>عن الفني</b><p>${t.bio||'لا توجد نبذة.'}</p><b>الخدمات</b><p>${t.services||'—'}</p><p class="muted">خبرة ${t.exp||0} سنوات</p></div><div class="actions"><button class="btn success" onclick="callTech('${t.phone}')">📞 اتصال</button><button class="btn secondary" onclick="wa('${t.phone}')">💬 واتساب</button></div><button class="btn primary" style="width:100%;margin-top:10px" onclick="requestService(${t.id})">طلب خدمة</button><hr style="border:0;border-top:1px solid var(--line);margin:20px 0"><b>آخر التقييمات</b><div class="card"><span class="rating">⭐⭐⭐⭐⭐</span><p class="muted">نظام التقييم مرتبط بالطلبات المكتملة في النسخة القادمة.</p></div>`;document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+function callTech(phone){window.location.href='tel:'+phone}
+function wa(phone){window.open('https://wa.me/964'+phone.replace(/^0/,''),'_blank')}
+function requestService(id){let t=techs.find(x=>x.id===id);document.getElementById('sheet').innerHTML=`<h2>طلب خدمة من ${t.name}</h2><div class="field"><label>وصف المشكلة</label><textarea id="reqDesc" placeholder="مثلاً: السبلت يشتغل لكن ما يبرد"></textarea></div><div class="field"><label>المنطقة</label><select id="reqArea"><option>${t.area}</option><option>العشار</option><option>الجزائر</option><option>المعقل</option><option>أبو الخصيب</option></select></div><button class="btn primary" style="width:100%" onclick="sendRequest(${id})">إرسال الطلب</button>`;document.getElementById('modal').classList.add('show')}
+function sendRequest(id){let d=document.getElementById('reqDesc').value.trim();if(!d){alert('اكتب وصف المشكلة أولاً');return}closeModal();alert('تم إرسال الطلب للفني بنجاح ✅');}
+function registerTech(e){e.preventDefault();let t={id:Date.now(),name:document.getElementById('rName').value,phone:document.getElementById('rPhone').value,cat:document.getElementById('rCat').value,area:document.getElementById('rArea').value,exp:+document.getElementById('rExp').value||0,services:document.getElementById('rServices').value,bio:document.getElementById('rBio').value,rating:0,reviews:0,featured:false,available:false,verified:false,pending:true};techs.push(t);save();e.target.reset();alert('تم استلام طلب التسجيل ✅\\nالحساب بانتظار مراجعة الأدمن.');show('home');renderAll()}
+function renderAdmin(){document.getElementById('statTech').textContent=techs.length;document.getElementById('statFeatured').textContent=techs.filter(t=>t.featured).length;document.getElementById('statReviews').textContent=techs.reduce((s,t)=>s+t.reviews,0);document.getElementById('adminTechs').innerHTML=techs.map(t=>`<div class="card"><b>${t.name}</b><div class="muted">${t.cat} · ${t.area}</div><div class="rating">${t.reviews?`⭐ ${t.rating.toFixed(1)} (${t.reviews})`:'جديد'}</div><span class="tag">${t.verified?'موثق':'بانتظار المراجعة'}</span><div class="actions"><button class="btn success" onclick="approve(${t.id})">موافقة</button><button class="btn secondary" onclick="feature(${t.id})">${t.featured?'إلغاء المميز':'جعله مميز'}</button></div></div>`).join('')}
+function approve(id){let t=techs.find(x=>x.id===id);t.verified=true;t.pending=false;save();renderAdmin();renderAll()}
+function feature(id){let t=techs.find(x=>x.id===id);t.featured=!t.featured;save();renderAdmin();renderAll()}
+function renderAll(){renderFeatured();searchTechs(document.getElementById('searchInput')?.value||'')}
+renderCats();renderAll();
+
+let users=JSON.parse(localStorage.getItem('fazaa_users')||'[]');
+let currentUser=JSON.parse(localStorage.getItem('fazaa_current_user')||'null');
+function saveUsers(){localStorage.setItem('fazaa_users',JSON.stringify(users))}
+function openAccount(btn){document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderAccount();show('account')}
+function registerCustomer(e){e.preventDefault();let phone=cPhone.value.trim();if(users.some(u=>u.phone===phone)){alert('هذا الرقم مسجل مسبقاً');return}let u={id:Date.now(),role:'customer',name:cName.value.trim(),phone,province:cProvince.value,area:cArea.value.trim(),pass:cPass.value};users.push(u);currentUser=u;saveUsers();localStorage.setItem('fazaa_current_user',JSON.stringify(u));alert('تم إنشاء الحساب ✅');renderAccount();show('home')}
+function loginUser(e){e.preventDefault();let phone=loginPhone.value.trim(),pass=loginPass.value;if(phone==='admin'&&pass==='1234'){currentUser={role:'admin',name:'مدير فزعة',phone:'admin'};localStorage.setItem('fazaa_current_user',JSON.stringify(currentUser));show('admin');renderAdmin();return}let u=users.find(x=>x.phone===phone&&x.pass===pass);if(!u){alert('بيانات الدخول غير صحيحة');return}currentUser=u;localStorage.setItem('fazaa_current_user',JSON.stringify(u));renderAccount();show('account')}
+function logout(){currentUser=null;localStorage.removeItem('fazaa_current_user');renderAccount();show('home')}
+function renderAccount(){let box=document.getElementById('accountBox');if(!currentUser){box.innerHTML='<div class="card"><b>أهلاً بك في فزعة 👋</b><p class="muted">سجل دخولك حتى تحفظ طلباتك.</p><button class="btn primary" style="width:100%" onclick="show(\'login\')">تسجيل الدخول</button><div class="actions"><button class="btn secondary" onclick="show(\'customerRegister\')">إنشاء حساب زبون</button><button class="btn secondary" onclick="show(\'register\')">سجّل كفني</button></div></div>';return}if(currentUser.role==='admin'){box.innerHTML='<div class="card"><b>🧑‍💼 '+currentUser.name+'</b><p class="muted">إدارة فزعة</p><button class="btn primary" style="width:100%" onclick="show(\'admin\');renderAdmin()">فتح لوحة الأدمن</button></div><button class="btn danger" style="width:100%" onclick="logout()">تسجيل الخروج</button>';return}box.innerHTML='<div class="card"><b>👤 '+currentUser.name+'</b><p class="muted">'+currentUser.phone+' · '+(currentUser.province||'')+' '+(currentUser.area||'')+'</p></div><div class="card"><b>📋 طلباتي</b><p class="muted">طلباتك ستظهر هنا.</p></div><button class="btn danger" style="width:100%" onclick="logout()">تسجيل الخروج</button>'}
+renderAccount();
+
+</script>
+</div>
+</body>
+</html>
