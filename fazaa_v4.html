@@ -118,7 +118,10 @@ async function submitRequest() {
 
     msg.textContent = 'تم إرسال طلبك بنجاح ✅';
   } catch (error) {
-    msg.textContent = 'ما انحفظ الطلب. نحتاج نراجع إعدادات الربط والحماية.';
+  } catch (error) {
+  console.error('Fazaa error:', error);
+  msg.textContent = 'فشل الحفظ: ' + error.message;
+}
   }
 }
 
