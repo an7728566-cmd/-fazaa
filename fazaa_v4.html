@@ -1,27 +1,52 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0f766e">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="فزعة">
-<title>فزعة | الفني اللي تحتاجه بوقت تحتاجه</title>
+<title>فزعة | خدمات الفنيين</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;background:#f5f7f8;color:#17202a}
-.app{max-width:520px;margin:auto;min-height:100vh;background:#fff}.top{background:#0f766e;color:#fff;padding:28px 20px 22px;border-radius:0 0 24px 24px}.brand{font-size:30px;font-weight:900}.slogan{opacity:.9;margin-top:5px;font-size:14px}.card{margin:16px;padding:18px;border:1px solid #e7ecee;border-radius:18px;box-shadow:0 5px 18px #0000000a}.search{width:100%;padding:14px;border:1px solid #d8e0e2;border-radius:13px;font-size:16px}.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.cat{border:0;background:#eef8f7;padding:15px;border-radius:14px;font-size:16px;font-weight:700;color:#075e59}.tech{padding:14px;border:1px solid #e7ecee;border-radius:15px;margin-top:10px}.tech b{font-size:17px}.muted{color:#718096;font-size:13px;margin-top:4px}.btns{display:flex;gap:8px;margin-top:12px}.btn{flex:1;border:0;border-radius:11px;padding:11px;font-weight:800;font-size:14px}.call{background:#0f766e;color:#fff}.wa{background:#e9f8ee;color:#19713a}.nav{position:sticky;bottom:0;background:#fff;border-top:1px solid #e6e6e6;display:flex;padding:8px}.nav button{flex:1;border:0;background:white;padding:10px;font-weight:700;color:#667}.nav .active{color:#0f766e}.screen{display:none}.screen.active{display:block}.form{display:grid;gap:10px}.form input,.form select,.form textarea{padding:13px;border:1px solid #d8e0e2;border-radius:12px;font-size:15px}.primary{background:#0f766e;color:#fff;border:0;border-radius:12px;padding:13px;font-weight:800}.back{background:none;border:0;font-size:15px;padding:0;margin-bottom:10px;color:#0f766e;font-weight:700}.note{background:#fff7df;padding:12px;border-radius:12px;font-size:13px;color:#705b16}
+*{box-sizing:border-box}
+body{margin:0;background:#f5f7f8;color:#17202a;font-family:Tahoma,Arial,sans-serif}
+.app{max-width:520px;min-height:100vh;margin:auto;background:white}
+.top{background:#0f766e;color:white;padding:26px 20px;border-radius:0 0 24px 24px}
+.brand{font-size:32px;font-weight:bold}
+.slogan{margin-top:7px;font-size:14px}
+.card{margin:15px;padding:17px;border:1px solid #e5ebed;border-radius:17px}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button,input,select,textarea{font:inherit}
+input,select,textarea{width:100%;padding:13px;border:1px solid #d5dfe1;border-radius:11px}
+.form{display:grid;gap:10px}
+.primary{background:#0f766e;color:white;border:0;border-radius:11px;padding:14px;font-weight:bold}
+.cat{padding:15px;border:0;border-radius:12px;background:#eef8f7;color:#075e59}
+.screen{display:none}
+.screen.active{display:block}
+.nav{position:sticky;bottom:0;display:flex;background:white;border-top:1px solid #ddd;padding:8px}
+.nav button{flex:1;border:0;background:white;padding:10px;color:#555}
+.nav button.active{color:#0f766e;font-weight:bold}
+.tech{border:1px solid #e5ebed;padding:13px;border-radius:12px;margin-top:10px}
+.muted{font-size:13px;color:#718096;margin-top:5px}
+.btns{display:flex;gap:8px;margin-top:10px}
+.btn{flex:1;padding:10px;border:0;border-radius:10px}
+.call{background:#0f766e;color:white}
+.wa{background:#e9f8ee;color:#19713a}
+.back{background:none;border:0;color:#0f766e;padding:0 0 12px}
+#msg{overflow-wrap:anywhere;font-size:14px}
 </style>
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand">فزعة</div><div class="slogan">الفني اللي تحتاجه .. بوقت تحتاجه</div></header>
+<header class="top">
+<div class="brand">فزعة</div>
+<div class="slogan">الفني اللي تحتاجه .. بوقت تحتاجه</div>
+</header>
 
 <section id="home" class="screen active">
 <div class="card">
 <h2>شنو تحتاج اليوم؟</h2>
-<input id="search" class="search" placeholder="ابحث عن كهربائي، سباك، تبريد...">
-<div class="cats">
+<input id="search" placeholder="ابحث عن كهربائي، سباك، تبريد...">
+<div class="cats" style="margin-top:12px">
 <button class="cat" onclick="filterCat('كهرباء')">⚡ كهرباء</button>
 <button class="cat" onclick="filterCat('تبريد')">❄️ تبريد وتكييف</button>
 <button class="cat" onclick="filterCat('سباكة')">🔧 سباكة</button>
@@ -30,36 +55,59 @@
 <button class="cat" onclick="filterCat('تنظيف')">🧹 تنظيف</button>
 </div>
 </div>
-<div class="card"><h2>فنيين قريبين منك</h2><div id="list"></div></div>
+<div class="card">
+<h2>الفنيون</h2>
+<div id="list"></div>
+<p class="muted">الفنيون الظاهرون حالياً أمثلة تجريبية.</p>
+</div>
 </section>
 
 <section id="request" class="screen">
-<div class="card"><button class="back" onclick="show('home')">← رجوع</button><h2>طلب خدمة</h2>
+<div class="card">
+<button class="back" onclick="show('home')">← رجوع</button>
+<h2>طلب خدمة</h2>
 <div class="form">
 <input id="rname" placeholder="اسمك">
-<input id="rphone" placeholder="رقم الهاتف">
-<select id="rtype"><option>كهرباء</option><option>تبريد</option><option>سباكة</option><option>موبايل</option><option>نجارة</option><option>تنظيف</option></select>
+<input id="rphone" type="tel" placeholder="رقم الهاتف">
+<select id="rtype">
+<option>كهرباء</option>
+<option>تبريد</option>
+<option>سباكة</option>
+<option>موبايل</option>
+<option>نجارة</option>
+<option>تنظيف</option>
+</select>
 <textarea id="rdesc" rows="4" placeholder="اكتب شنو تحتاج"></textarea>
-<button class="primary" onclick="submitRequest()">إرسال الطلب</button>
-<div id="msg"></div>
-</div></div>
+<button id="sendBtn" class="primary" onclick="submitRequest()">إرسال الطلب</button>
+<div id="msg" role="status"></div>
+</div>
+</div>
 </section>
 
 <section id="account" class="screen">
-<div class="card"><h2>حسابي</h2><p class="muted">تگدر تسجل كزبون أو فني.</p>
+<div class="card">
+<h2>حسابي</h2>
 <div class="form">
 <input id="aname" placeholder="الاسم">
 <input id="aphone" placeholder="رقم الهاتف">
-<select id="arole"><option value="customer">زبون</option><option value="tech">فني</option></select>
-<button class="primary" onclick="saveAccount()">حفظ الحساب</button>
-</div><div id="accountMsg" class="note" style="margin-top:12px">ماكو حساب محفوظ حالياً.</div></div>
-<div class="card"><h3>تسجيل فني</h3><div class="form">
-<input id="tname" placeholder="اسم الفني / المحل">
+<select id="arole">
+<option value="customer">زبون</option>
+<option value="tech">فني</option>
+</select>
+<button class="primary" onclick="saveAccount()">حفظ الحساب على هذا الجهاز</button>
+<div id="accountMsg" class="muted"></div>
+</div>
+</div>
+<div class="card">
+<h3>إضافة فني تجريبي</h3>
+<div class="form">
+<input id="tname" placeholder="اسم الفني أو المحل">
 <input id="tphone" placeholder="رقم الهاتف">
 <input id="tservice" placeholder="الخدمة">
 <input id="tarea" placeholder="المنطقة">
-<button class="primary" onclick="addTech()">إضافة فني تجريبي</button>
-</div></div>
+<button class="primary" onclick="addTech()">إضافة فني</button>
+</div>
+</div>
 </section>
 
 <div class="nav">
@@ -70,63 +118,128 @@
 </div>
 
 <script>
+const FIRESTORE_URL =
+'https://firestore.googleapis.com/v1/projects/fazaa-app-581d/databases/(default)/documents/requests';
+
 let techs=[
 {name:"علي للتبريد والتكييف",service:"تبريد",area:"البصرة",phone:"07700000001",rating:"4.9"},
 {name:"كهربائي أبو حسن",service:"كهرباء",area:"البصرة",phone:"07700000002",rating:"4.8"},
 {name:"سباك البصرة",service:"سباكة",area:"البصرة",phone:"07700000003",rating:"4.7"},
 {name:"موبايل ستور",service:"موبايل",area:"البصرة",phone:"07700000004",rating:"4.9"}
 ];
+
 const list=document.getElementById('list');
-function render(q="",cat=""){let a=techs.filter(t=>(!q||Object.values(t).join(" ").includes(q))&&(!cat||t.service==cat));list.innerHTML=a.map(t=>`<div class="tech"><b>${t.name}</b><div class="muted">${t.service} • ${t.area} • ⭐ ${t.rating}</div><div class="btns"><button class="btn call" onclick="location.href='tel:${t.phone}'">اتصال</button><button class="btn wa" onclick="location.href='https://wa.me/964${t.phone.replace(/^0/,'')}'">واتساب</button></div></div>`).join("")||'<p class="muted">ماكو نتائج حالياً.</p>'}
+
+function render(q="",cat=""){
+const filtered=techs.filter(t=>
+(!q||Object.values(t).join(" ").includes(q))&&
+(!cat||t.service===cat)
+);
+list.innerHTML=filtered.map(t=>`
+<div class="tech">
+<strong>${escapeHTML(t.name)}</strong>
+<div class="muted">${escapeHTML(t.service)} • ${escapeHTML(t.area)} • ⭐ ${t.rating}</div>
+<div class="btns">
+<button class="btn call" onclick="callTech('${t.phone}')">اتصال</button>
+<button class="btn wa" onclick="whatsappTech('${t.phone}')">واتساب</button>
+</div>
+</div>`).join("")||'<p class="muted">ماكو نتائج حالياً.</p>';
+}
+
+function escapeHTML(s){
+return String(s).replace(/[&<>"']/g,c=>({
+'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+}[c]));
+}
+function callTech(phone){location.href='tel:'+phone}
+function whatsappTech(phone){
+location.href='https://wa.me/964'+phone.replace(/^0/,'');
+}
 function filterCat(c){show('home');render("",c)}
-document.getElementById('search').oninput=e=>render(e.target.value);
-function show(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.s===id));scrollTo(0,0)}
+document.getElementById('search').addEventListener('input',e=>render(e.target.value));
 
-async function submitRequest() {
-  const msg = document.getElementById('msg');
-  const name = document.getElementById('rname').value.trim();
-  const phone = document.getElementById('rphone').value.trim();
-  const service = document.getElementById('rtype').value;
-  const description = document.getElementById('rdesc').value.trim();
-
-  if (!name || !phone || !description) {
-    msg.textContent = 'حبيبي، املأ الاسم ورقم الهاتف ووصف الطلب أولاً.';
-    return;
-  }
-
-  msg.textContent = 'جاري إرسال الطلب...';
-
-  try {
-    const response = await fetch(
-      'https://firestore.googleapis.com/v1/projects/fazaa-app-581d/databases/(default)/documents/requests',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fields: {
-            name: { stringValue: name },
-            phone: { stringValue: phone },
-            service: { stringValue: service },
-            description: { stringValue: description },
-            createdAt: { timestampValue: new Date().toISOString() }
-          }
-        })
-      }
-    );
-
-    if (!response.ok) throw new Error('تعذر حفظ الطلب');
-
-    msg.textContent = 'تم إرسال طلبك بنجاح ✅';
-  } catch (error) {
-  } catch (error) {
-  console.error('Fazaa error:', error);
-  msg.textContent = 'فشل الحفظ: ' + error.message;
-}
-  }
+function show(id){
+document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('.nav button').forEach(x=>
+x.classList.toggle('active',x.dataset.s===id)
+);
+window.scrollTo(0,0);
 }
 
-function saveAccount(){let a={name:aname.value,phone:aphone.value,role:arole.value};localStorage.fazaaAccount=JSON.stringify(a);accountMsg.textContent='تم حفظ الحساب على هذا الجهاز ✅'}
-function addTech(){techs.push({name:tname.value||"فني جديد",service:tservice.value||"خدمات",area:tarea.value||"العراق",phone:tphone.value||"07700000000",rating:"جديد"});render();alert("تمت إضافة الفني تجريبياً ✅")}
+async function submitRequest(){
+const msg=document.getElementById('msg');
+const btn=document.getElementById('sendBtn');
+const name=document.getElementById('rname').value.trim();
+const phone=document.getElementById('rphone').value.trim();
+const service=document.getElementById('rtype').value;
+const description=document.getElementById('rdesc').value.trim();
+
+if(!name||!phone||!description){
+msg.textContent='املأ الاسم ورقم الهاتف ووصف الطلب أولاً.';
+return;
+}
+
+btn.disabled=true;
+msg.textContent='جاري إرسال الطلب...';
+
+try{
+const response=await fetch(FIRESTORE_URL,{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({
+fields:{
+name:{stringValue:name},
+phone:{stringValue:phone},
+service:{stringValue:service},
+description:{stringValue:description},
+createdAt:{timestampValue:new Date().toISOString()}
+}
+})
+});
+
+const result=await response.json();
+
+if(!response.ok){
+console.error('Firebase error:',result);
+throw new Error(result.error?.message||('HTTP '+response.status));
+}
+
+msg.textContent='تم إرسال الطلب بنجاح ✅';
+document.getElementById('rname').value='';
+document.getElementById('rphone').value='';
+document.getElementById('rdesc').value='';
+
+}catch(error){
+console.error('Fazaa error:',error);
+msg.textContent='فشل الحفظ: '+error.message;
+}finally{
+btn.disabled=false;
+}
+}
+
+function saveAccount(){
+const a={
+name:document.getElementById('aname').value.trim(),
+phone:document.getElementById('aphone').value.trim(),
+role:document.getElementById('arole').value
+};
+localStorage.setItem('fazaaAccount',JSON.stringify(a));
+document.getElementById('accountMsg').textContent='تم حفظ الحساب على هذا الجهاز ✅';
+}
+
+function addTech(){
+techs.push({
+name:document.getElementById('tname').value||"فني جديد",
+service:document.getElementById('tservice').value||"خدمات",
+area:document.getElementById('tarea').value||"العراق",
+phone:document.getElementById('tphone').value||"07700000000",
+rating:"جديد"
+});
+render();
+alert("تمت إضافة الفني تجريبياً. الإضافة ليست محفوظة على الإنترنت.");
+}
+
 render();
 </script>
 </body>
